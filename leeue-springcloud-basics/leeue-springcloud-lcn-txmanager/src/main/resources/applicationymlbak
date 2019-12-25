@@ -1,0 +1,37 @@
+server:
+  port: 8899
+
+###服务名称(服务注册到eureka名称)
+spring:
+  application:
+    name: tx-manager
+  #数据库连接信息
+  datasource:
+    name: test
+    url: jdbc:mysql://127.0.0.1:3306/tx-manager?useUnicode=true&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE&useSSL=false
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+  redis:
+    host: 120.78.185.72
+    port: 6379
+    password: 123456
+
+###服务注册到eureka地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8100/eureka
+###设置feign客户端超时时间
+ribbon:
+  ###指的是建立连接所用的时间，适用于网络状况正常的情况下，两端连接所用的时间。
+  ReadTimeout: 100000
+  ###指的是建立连接后从服务器读取到可用资源所用的时间。
+  ConnectTimeout: 100000
+
+#######################lcn个性化配置#####################
+tx-lcn:
+  manager:
+    heart-time: 15000
